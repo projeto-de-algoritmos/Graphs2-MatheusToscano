@@ -1,10 +1,13 @@
-const problem = {
-    start: {A: 5, B: 2},
-    A: {start: 1, C: 4, D: 2},
-    B: {A: 8, D: 7},
-    C: {D: 6, finish: 3},
-    D: {finish: 1},
-    finish: {}
+const graph = {
+    Gama: {AsaSul: 5, SantaMaria: 1, RiachoFundo: 3},
+    AsaSul: {Gama: 4, ParkWay: 2, AsaNorte: 1},
+    SantaMaria: {AsaSul: 5, AsaNorte: 8},
+    ParkWay: {AsaNorte: 4, Samambaia: 5, Recanto: 3},
+    AsaNorte: {Samambaia: 7, AsaSul: 2},
+    RiachoFundo: { Samambaia: 3, ParkWay: 3, Recanto: 1},
+    Recanto: {Samambaia: 1, RiachoFundo: 1, Gama: 3},
+    Taguatinga: {Samambaia: 1, AsaSul: 3, Recanto: 2},
+    Samambaia: {AsaSul: 3, Recanto: 2, Taguatinga: 2}
 };
 
 function log(message) {
@@ -85,6 +88,6 @@ const dijkstra = (graph, startNodeName, endNodeName) => {
     return results;
 };
 
-console.log(dijkstra(problem, "start", "finish"));
-console.log(dijkstra(problem, "A", "B"));
-console.log(dijkstra(problem, "A", "start"));
+console.log(dijkstra(graph, "Samambaia", "Gama"));
+console.log(dijkstra(graph, "Gama", "AsaNorte"));
+console.log(dijkstra(graph, "Samambaia", "AsaNorte"));
