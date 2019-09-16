@@ -27,6 +27,7 @@ const dijkstra = (graph) => {
     }
 
     const processed = [];
+    let node = lowCostNode(costs, processed);
 
     while(node){
         let cost = costs[node];
